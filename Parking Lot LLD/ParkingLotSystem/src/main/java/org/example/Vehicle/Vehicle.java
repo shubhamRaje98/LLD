@@ -1,5 +1,8 @@
 package org.example.Vehicle;
 
+import org.example.parkingLot.ParkingSpot;
+import org.example.parkingLot.SpotType;
+
 public abstract class Vehicle {
     private final VehicleType vehicleType;
     private final String licensePlate;
@@ -19,4 +22,5 @@ public abstract class Vehicle {
     }
 
     public abstract double calculateFees(double hoursStayed);
+    public abstract SpotType getParkingSpotType();
 }
