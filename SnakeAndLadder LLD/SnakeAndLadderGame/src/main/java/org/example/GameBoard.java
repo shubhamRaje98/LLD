@@ -31,7 +31,7 @@ public class GameBoard {
 
             if(nextCell>this.BOARDSIZE){ // If the next position is out of bound
                 System.out.println("Exceeding the board");
-                nextCell = currentCell + (nextCell-this.BOARDSIZE);
+                nextCell = currentCell;
             }
 
             if(snakeAndLadderJumper.containsKey(nextCell)){ // Check if player has arrived at snake or ladder

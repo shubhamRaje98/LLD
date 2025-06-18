@@ -7,6 +7,11 @@ import java.util.Random;
 public class Dice {
     int noOfDices;
     Random random = new Random();
+
+    public Dice(int noOfDice) {
+        this.noOfDices = noOfDice;
+    }
+
     public int rollTheDice(){
         int result =0;
         int noOfDices = this.noOfDices;
