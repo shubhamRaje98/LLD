@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.components.Board;
 import org.example.components.Player;
 import org.example.components.Symbol;
 import org.example.winningstrategy.DefaultWinnerStratergy;
@@ -34,6 +35,7 @@ public class App
         System.out.println("Enter the board size: ");
         int boardSize = sc.nextInt();
         WinnerStratergy winnerStratergy = new DefaultWinnerStratergy();
-        Game game = new Game(boardSize, playerX, playerO, winnerStratergy);
+        Board board  = new Board(playerX, playerO, boardSize, winnerStratergy);
+        Game game = new Game(board);
     }
 }

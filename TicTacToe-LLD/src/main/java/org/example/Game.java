@@ -7,27 +7,18 @@ import org.example.winningstrategy.WinnerStratergy;
 import java.util.Scanner;
 
 public class Game {
-    int boardSize;
     Board board;
     Scanner sc;
-    Player playerX;
-    Player playerO;
-
     WinnerStratergy winnerStratergy;
-    public Game(int boardSize, Player playerX, Player playerO, WinnerStratergy winnerStratergy){
-        this.boardSize = boardSize;
-        this.playerX = playerX;
-        this.playerO = playerO;
-        this.board = new Board(playerX, playerO, boardSize);
-        this.winnerStratergy = winnerStratergy;
-        sc = new Scanner(System.in);
-
+    public Game(Board board){
+        this.sc = new Scanner(System.in);
+        this.board = board;
         //Start the game
         startGame();
     }
 
     public void startGame(){
-        Player current = playerX;
+        Player current = board.getPlayerX();
         while(true){
             board.printBoard();
 
@@ -42,12 +33,12 @@ public class Game {
                 break;
             }
 
-            if(winnerStratergy.isWinner(board.getBoard(), boardSize, current, r, c)){
+            if(board.isWinner(current, r, c)){
                 System.out.println("Congrats! " + current.getName() + " you won!");
                 break;
             }
 
-            current = (current == playerX)?playerO: playerX;
+            current = (current == board.getPlayerX())?board.getPlayerO(): board.getPlayerX();
         }
     }
 

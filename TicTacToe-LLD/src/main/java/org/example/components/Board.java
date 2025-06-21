@@ -2,6 +2,7 @@ package org.example.components;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.example.winningstrategy.WinnerStratergy;
 
 @Getter
 @Setter
@@ -12,17 +13,21 @@ public class Board {
     Symbol[][] board;
 
     int movesPlayed;
-
-    public Board(Player playerX, Player playerO, int boardSize){
+    WinnerStratergy winnerStratergy;
+    public Board(Player playerX, Player playerO, int boardSize, WinnerStratergy winnerStratergy){
         this.playerX = playerX;
         this.playerO = playerO;
         this.boardSize = boardSize;
         this.movesPlayed = 0;
-        board = new Symbol[boardSize][boardSize];
+        this.board = new Symbol[boardSize][boardSize];
+        this.winnerStratergy = winnerStratergy;
 
     }
 
 
+    public boolean isWinner(Player player, int row, int col){
+        return winnerStratergy.isWinner(board, boardSize, player, row, col);
+    }
     public void printBoard(){
         System.out.println("***Printing the board***");
         for(int i = 0; i<boardSize; i++){
